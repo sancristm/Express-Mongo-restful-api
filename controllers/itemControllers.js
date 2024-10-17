@@ -1,8 +1,7 @@
 import asyncHandler from 'express-async-handler';
-
 import Item from '../models/itemModel.js';
 
-// Controller to add an item
+//  to add an item
 export const addItem = asyncHandler(async (req, res) => {
   const { name, description } = req.body;
 
@@ -20,22 +19,20 @@ export const addItem = asyncHandler(async (req, res) => {
   res.status(201).json(item);
 });
 
+// Controller to fetch all items
 export const getItems = asyncHandler(async (req, res) => {
   const items = await Item.find();
-  res.json(Item);
+  res.json(items); // Return the fetched items
 });
 
-//deleting the Item by Id
+// Controller to delete an item by ID
 export const deleteItemsById = asyncHandler(async (req, res) => {
-  const itemToDelete = req.params.ItemId;
+  const itemToDelete = req.params.id; // Use the correct param key
 
   try {
-    const deletedItem = await Product.findOneAndDelete({
-      Id: { itemToDelete },
-    });
-
+    const deletedItem = await Item.findOneAndDelete({ _id: itemToDelete }); // Use _id for MongoDB
     if (!deletedItem) {
-      return res.status(404).json({ error: 'item not found' });
+      return res.status(404).json({ error: 'Item not found' });
     }
 
     res.status(200).json({ message: 'Item deleted successfully', deletedItem });
@@ -43,10 +40,11 @@ export const deleteItemsById = asyncHandler(async (req, res) => {
     res.status(500).json({ error: 'Unable to delete item' });
   }
 });
-// Function to update an item by its Id
+
+// Function to update an item by its ID
 export const updateItemById = asyncHandler(async (req, res) => {
-  const { id } = req.params; // Geting the id  from the route parameters //destructuring
-  const { name, description } = req.body; // Geting  the new data from the request body //destructuring
+  const { id } = req.params; // Get the id from the route parameters
+  const { name, description } = req.body; // Get the new data from the request body
 
   // Find the item by ID
   const item = await Item.findById(id);
@@ -56,7 +54,7 @@ export const updateItemById = asyncHandler(async (req, res) => {
     return res.status(404).json({ error: 'Item not found' });
   }
 
-  // Update item properties ie name & desc
+  // Update item properties
   if (name) item.name = name;
   if (description) item.description = description;
 
