@@ -113,8 +113,20 @@ This response can be documented as a JSON schema for the consumers of the API.
 
 ### 2. Add a New Item
 
+The `POST /addItem` endpoint is used to add a new item. The request should include a JSON payload with the `name` and `description` fields.
+
+### Request Body
+
+- `name` (string, required): The name of the item.
+    
+- `description` (string, required): Description of the item.
+    
+
+### Response
+
+The response will be in JSON format with the following schema:
 - **Endpoint:** `POST /api/items/addItem`
-- **Description:** Adds a new item to the database.
+
 
 **Request Body:**
 
