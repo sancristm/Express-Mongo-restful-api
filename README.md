@@ -47,7 +47,7 @@ Write the business logic for CRUD operations in the `controllers/` folder, organ
 
 Define the necessary routes in the `routes/` folder that map to the controller methods for the CRUD operations.
 
-### 6. Bonus (Optional)
+### 6. Todo
 
 If you have extra time, consider adding one or more of the following:
 - **Input Validation**: Use a validation library like `Joi` or `express-validator` to validate the request payloads.
