@@ -150,7 +150,7 @@ http://localhost:5000/api/items
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-repo/items-api.git
+   git clone https://github.com/sancristm/Express-Mongo-restful-api.git
    ```
 
 2. **Install dependencies:**
