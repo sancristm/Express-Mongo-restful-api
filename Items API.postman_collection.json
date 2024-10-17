@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "ef5c6a10-b4fd-48b3-9b8c-277d5ed247e8",
+		"name": "Items API",
+		"description": "This is a RESTful API for managing items, built with Node.js, Express, and MongoDB.EndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24688717"
+	},
+	"item": [
+		{
+			"name": "Items list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "The API endpoint makes an HTTP GET request to {{base}} and returns a JSON response with a status code of 200. The response body consists of an array of objects, each containing the following properties:\n\n- `_id`: (string) The unique identifier of the object.\n    \n- `name`: (string) The name of the object.\n    \n- `description`: (string) The description of the object.\n    \n- `createdAt`: (string) The timestamp indicating the creation time of the object.\n    \n- `updatedAt`: (string) The timestamp indicating the last update time of the object.\n    \n- `__v`: (number) The version of the object.\n    \n\nThis response can be documented as a JSON schema for the consumers of the API."
+			},
+			"response": []
+		},
+		{
+			"name": "delete Item by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "This endpoint sends an HTTP DELETE request to delete an item by its ID. The ID is specified as a path parameter in the request URL. Upon successful execution, the response will have a status code of 200 and a content type of application/json. The response body will contain a message, and details of the deleted item including its ID, name, description, creation and update timestamps, and a version field.\n\nTo document the response as a JSON schema, the following schema can be used:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"deletedItem\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"_id\": {\n                    \"type\": \"string\"\n                },\n                \"name\": {\n                    \"type\": \"string\"\n                },\n                \"description\": {\n                    \"type\": \"string\"\n                },\n                \"createdAt\": {\n                    \"type\": \"string\"\n                },\n                \"updatedAt\": {\n                    \"type\": \"string\"\n                },\n                \"__v\": {\n                    \"type\": \"integer\"\n                }\n            }\n        }\n    }\n}\n\n ```\n\nTo save the 'deletedItemId' field to a variable, the response body can be parsed to extract the value of the '_id' field from the 'deletedItem' object, and then assigned to a variable for further processing.\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"error\": {\n            \"type\": \"string\"\n        }\n    }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Item",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "The `POST /addItem` endpoint is used to add a new item. The request should include a JSON payload with the `name` and `description` fields.\n\n### Request Body\n\n- `name` (string, required): The name of the item.\n    \n- `description` (string, required): Description of the item.\n    \n\n### Response\n\nThe response will be in JSON format with the following schema:\n\n``` json\n{\n  \"_id\": \"\",\n  \"name\": \"\",\n  \"description\": \"\",\n  \"createdAt\": \"\",\n  \"updatedAt\": \"\",\n  \"__v\": 0\n}\n\n ```"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base",
+			"value": "http://localhost:5000/api/items/"
+		}
+	]
+}
