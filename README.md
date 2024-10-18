@@ -77,8 +77,24 @@ http://localhost:5000/api/items
 
 ### 1. Get All Items
 
+The API endpoint makes an HTTP GET request to {{base}} and returns a JSON response with a status code of 200. The response body consists of an array of objects, each containing the following properties:
+
+- `_id`: (string) The unique identifier of the object.
+    
+- `name`: (string) The name of the object.
+    
+- `description`: (string) The description of the object.
+    
+- `createdAt`: (string) The timestamp indicating the creation time of the object.
+    
+- `updatedAt`: (string) The timestamp indicating the last update time of the object.
+    
+- `__v`: (number) The version of the object.
+    
+
+This response can be documented as a JSON schema for the consumers of the API.
 - **Endpoint:** `GET /api/items`
-- **Description:** Fetches all items from the database.
+
 
 **Response Example:**
 
@@ -97,8 +113,20 @@ http://localhost:5000/api/items
 
 ### 2. Add a New Item
 
+The `POST /addItem` endpoint is used to add a new item. The request should include a JSON payload with the `name` and `description` fields.
+
+### Request Body
+
+- `name` (string, required): The name of the item.
+    
+- `description` (string, required): Description of the item.
+    
+
+### Response
+
+The response will be in JSON format with the following schema:
 - **Endpoint:** `POST /api/items/addItem`
-- **Description:** Adds a new item to the database.
+
 
 **Request Body:**
 
