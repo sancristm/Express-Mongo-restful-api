@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import pickspotRoutes from './routes/pickspotRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
+import userRoutes from './routes/userRoutes.js';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -18,6 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Mount the item routes under /api/items
 app.use('/api/items', pickspotRoutes);
+
+app.use('/api/users', userRoutes);
 
 // Define the root route
 app.get('/', (req, res) => {
